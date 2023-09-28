@@ -54,10 +54,18 @@ dependencies {
     val fragmentVersion = "1.6.1"
     val appcompatVersion = "1.6.1"
     val lifecycleVersion = "2.6.2"
+    val koinVersion = "3.5.0"
+    val constraintLayoutVersion = "2.1.4"
+    val recyclerViewVersion = "1.3.1"
 
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
     implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+
+    implementation("androidx.recyclerview:recyclerview:$recyclerViewVersion")
+    implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
+
+    implementation("io.insert-koin:koin-android:$koinVersion")
 }
