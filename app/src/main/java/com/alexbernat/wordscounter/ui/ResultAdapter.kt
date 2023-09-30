@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alexbernat.wordscounter.databinding.ItemResultBinding
 import com.alexbernat.wordscounter.domain.model.Word
 
-private val DiffUtilCallback = object : DiffUtil.ItemCallback<Word>() {
+private val diffUtilCallback = object : DiffUtil.ItemCallback<Word>() {
 
     override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean {
         return oldItem.name == newItem.name
@@ -20,7 +20,7 @@ private val DiffUtilCallback = object : DiffUtil.ItemCallback<Word>() {
 }
 
 
-class ResultAdapter : ListAdapter<Word, ResultAdapter.WordViewHolder>(DiffUtilCallback) {
+class ResultAdapter : ListAdapter<Word, ResultAdapter.WordViewHolder>(diffUtilCallback) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
