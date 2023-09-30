@@ -1,6 +1,6 @@
 package com.alexbernat.wordscounter.domain
 
-import com.alexbernat.wordscounter.ui.model.SortingOption
+import com.alexbernat.wordscounter.domain.model.SortingOption
 import com.alexbernat.wordscounter.domain.model.Word
 
 class SortWordsUseCase {

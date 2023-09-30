@@ -6,7 +6,7 @@ import com.alexbernat.wordscounter.domain.CalculateWordsUseCase
 import com.alexbernat.wordscounter.domain.GetTextUseCase
 import com.alexbernat.wordscounter.domain.SortWordsUseCase
 import com.alexbernat.wordscounter.ui.model.CalculationResult
-import com.alexbernat.wordscounter.ui.model.SortingOption
+import com.alexbernat.wordscounter.domain.model.SortingOption
 import com.alexbernat.wordscounter.ui.model.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

@@ -14,7 +14,7 @@ import com.alexbernat.wordscounter.R
 import com.alexbernat.wordscounter.databinding.FragmentMainBinding
 import com.alexbernat.wordscounter.ui.base.BaseFragment
 import com.alexbernat.wordscounter.ui.model.CalculationResult
-import com.alexbernat.wordscounter.ui.model.SortingOption
+import com.alexbernat.wordscounter.domain.model.SortingOption
 import com.alexbernat.wordscounter.ui.model.UiState
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

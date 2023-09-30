@@ -1,4 +1,4 @@
-package com.alexbernat.wordscounter.ui.model
+package com.alexbernat.wordscounter.domain.model
 
 enum class SortingOption {
     FrequencyDesc,
