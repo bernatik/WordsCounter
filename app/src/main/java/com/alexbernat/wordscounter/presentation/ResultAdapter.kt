@@ -1,4 +1,4 @@
-package com.alexbernat.wordscounter.ui
+package com.alexbernat.wordscounter.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

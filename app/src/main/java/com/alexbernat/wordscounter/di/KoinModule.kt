@@ -7,7 +7,7 @@ import com.alexbernat.wordscounter.domain.CalculateWordsUseCase
 import com.alexbernat.wordscounter.domain.GetSortedWordsUseCase
 import com.alexbernat.wordscounter.domain.TextRepository
 import com.alexbernat.wordscounter.domain.WordsRepository
-import com.alexbernat.wordscounter.ui.MainFragmentViewModel
+import com.alexbernat.wordscounter.presentation.MainFragmentViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

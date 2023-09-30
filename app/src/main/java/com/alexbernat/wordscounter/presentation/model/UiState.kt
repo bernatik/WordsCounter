@@ -1,4 +1,4 @@
-package com.alexbernat.wordscounter.ui.model
+package com.alexbernat.wordscounter.presentation.model
 
 import com.alexbernat.wordscounter.domain.model.SortingOption
 import com.alexbernat.wordscounter.domain.model.Word

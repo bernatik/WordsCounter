@@ -2,7 +2,7 @@ package com.alexbernat.wordscounter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.alexbernat.wordscounter.ui.MainFragment
+import com.alexbernat.wordscounter.presentation.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.fragmentContainerView, MainFragment.newInstance())
+                .replace(R.id.fragmentContainerView, MainFragment.newInstance())
                 .commit()
         }
     }

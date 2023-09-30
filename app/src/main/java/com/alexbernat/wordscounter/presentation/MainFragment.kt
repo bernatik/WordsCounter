@@ -1,4 +1,4 @@
-package com.alexbernat.wordscounter.ui
+package com.alexbernat.wordscounter.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,8 +14,8 @@ import com.alexbernat.wordscounter.R
 import com.alexbernat.wordscounter.databinding.FragmentMainBinding
 import com.alexbernat.wordscounter.domain.model.SortingOption
 import com.alexbernat.wordscounter.domain.model.Word
-import com.alexbernat.wordscounter.ui.base.BaseFragment
-import com.alexbernat.wordscounter.ui.model.UiState
+import com.alexbernat.wordscounter.presentation.base.BaseFragment
+import com.alexbernat.wordscounter.presentation.model.UiState
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

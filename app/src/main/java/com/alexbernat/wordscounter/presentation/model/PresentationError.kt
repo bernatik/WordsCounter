@@ -1,4 +1,4 @@
-package com.alexbernat.wordscounter.ui.model
+package com.alexbernat.wordscounter.presentation.model
 
 import androidx.annotation.StringRes
 import com.alexbernat.wordscounter.R

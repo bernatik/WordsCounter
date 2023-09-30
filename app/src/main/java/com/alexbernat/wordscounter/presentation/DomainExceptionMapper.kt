@@ -1,7 +1,7 @@
-package com.alexbernat.wordscounter.ui
+package com.alexbernat.wordscounter.presentation
 
 import com.alexbernat.wordscounter.domain.model.exceptions.DomainException
-import com.alexbernat.wordscounter.ui.model.PresentationError
+import com.alexbernat.wordscounter.presentation.model.PresentationError
 
 fun DomainException.toPresentationError() =
     when (this) {

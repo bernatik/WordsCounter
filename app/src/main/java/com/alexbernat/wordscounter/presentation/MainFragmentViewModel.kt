@@ -1,4 +1,4 @@
-package com.alexbernat.wordscounter.ui
+package com.alexbernat.wordscounter.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,8 +6,8 @@ import com.alexbernat.wordscounter.domain.CalculateWordsUseCase
 import com.alexbernat.wordscounter.domain.GetSortedWordsUseCase
 import com.alexbernat.wordscounter.domain.model.SortingOption
 import com.alexbernat.wordscounter.domain.model.UseCaseOutput
-import com.alexbernat.wordscounter.ui.model.PresentationError
-import com.alexbernat.wordscounter.ui.model.UiState
+import com.alexbernat.wordscounter.presentation.model.PresentationError
+import com.alexbernat.wordscounter.presentation.model.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
