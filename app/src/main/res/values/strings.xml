@@ -3,4 +3,8 @@
 
     <string name="main_label">App calculates frequency of every word in Romeo and Juliett poem</string>
     <string name="main_btn">Calculate</string>
+
+    <!-- Errors -->
+    <string name="err_file">File reading error</string>
+    <string name="err_unknown">Something went wrong</string>
 </resources>

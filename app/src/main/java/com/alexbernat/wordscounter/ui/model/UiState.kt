@@ -1,9 +1,16 @@
 package com.alexbernat.wordscounter.ui.model
 
 import com.alexbernat.wordscounter.domain.model.SortingOption
+import com.alexbernat.wordscounter.domain.model.Word
 
-data class UiState(
-    val result: CalculationResult? = null,
-    val sortingOption: SortingOption = SortingOption.FrequencyDesc
-)
+sealed class UiState {
+    object Idle : UiState()
+    object Loading : UiState()
+    data class Data(
+        val result: List<Word> = emptyList(),
+        val sortingOption: SortingOption = SortingOption.DEFAULT
+    ) : UiState()
+
+    data class Error(val exception: PresentationError) : UiState()
+}
 

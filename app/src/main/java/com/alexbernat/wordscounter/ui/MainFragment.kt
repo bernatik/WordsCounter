@@ -12,9 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.alexbernat.wordscounter.R
 import com.alexbernat.wordscounter.databinding.FragmentMainBinding
-import com.alexbernat.wordscounter.ui.base.BaseFragment
-import com.alexbernat.wordscounter.ui.model.CalculationResult
 import com.alexbernat.wordscounter.domain.model.SortingOption
+import com.alexbernat.wordscounter.domain.model.Word
+import com.alexbernat.wordscounter.ui.base.BaseFragment
 import com.alexbernat.wordscounter.ui.model.UiState
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,7 +45,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         with(binding) {
             recyclerViewResultList.adapter = resultAdapter
             spinnerFilterOption.adapter = filterOptionsAdapter
-            spinnerFilterOption.onItemSelectedListener  = object : OnItemSelectedListener {
+            spinnerFilterOption.onItemSelectedListener = object : OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, v: View?, pos: Int, id: Long) {
                     (parent?.getItemAtPosition(pos) as? SortingOption)?.let { option ->
                         viewModel.applySortingOption(option)
@@ -71,27 +71,44 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     private fun renderState(state: UiState) {
-        when (val data = state.result) {
-            is CalculationResult.Success -> {
-                resultAdapter.submitList(data.data) {
-                    if (data.data.isNotEmpty()) {
-                        binding.recyclerViewResultList.scrollToPosition(0)
-                    }
-                }
-                binding.textViewLabel.visibility = View.GONE
-                binding.btnCalculate.visibility = View.GONE
-                binding.spinnerFilterOption.visibility = View.VISIBLE
-                binding.recyclerViewResultList.visibility = View.VISIBLE
-            }
+        when (state) {
+            is UiState.Idle -> binding.showInitialUi()
+            is UiState.Loading -> binding.showLoading()
+            is UiState.Data -> binding.showData(state.result)
+            is UiState.Error -> binding.showError(getString(state.exception.msgResId))
+        }
+    }
 
-            is CalculationResult.Error -> {
-                binding.textViewLabel.text = data.message
-            }
+    private fun FragmentMainBinding.showInitialUi(){
+        progressBar.visibility = View.GONE
+        textViewLabel.text = getString(R.string.main_label)
+    }
 
-            else -> {
-                binding.textViewLabel.text = getString(R.string.main_label)
+    private fun FragmentMainBinding.showLoading(){
+        progressBar.visibility = View.VISIBLE
+        textViewLabel.visibility = View.GONE
+        recyclerViewResultList.visibility = View.GONE
+        btnCalculate.visibility = View.GONE
+    }
+
+    private fun FragmentMainBinding.showError(msg: String) {
+        textViewLabel.text = msg
+        progressBar.visibility = View.GONE
+        recyclerViewResultList.visibility = View.GONE
+
+    }
+
+    private fun FragmentMainBinding.showData(words: List<Word>) {
+        resultAdapter.submitList(words) {
+            if (words.isNotEmpty()) {
+                recyclerViewResultList.scrollToPosition(0)
             }
         }
+        progressBar.visibility = View.GONE
+        textViewLabel.visibility = View.GONE
+        btnCalculate.visibility = View.GONE
+        spinnerFilterOption.visibility = View.VISIBLE
+        recyclerViewResultList.visibility = View.VISIBLE
     }
 
     companion object {

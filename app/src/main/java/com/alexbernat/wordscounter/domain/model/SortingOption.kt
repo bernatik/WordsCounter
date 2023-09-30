@@ -6,5 +6,9 @@ enum class SortingOption {
     Alphabetical,
     AlphabeticalDesc,
     Length,
-    LengthDesc
+    LengthDesc;
+
+    companion object {
+        val DEFAULT = FrequencyDesc
+    }
 }

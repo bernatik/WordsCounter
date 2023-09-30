@@ -2,12 +2,12 @@ package com.alexbernat.wordscounter.di
 
 import android.content.res.AssetManager
 import com.alexbernat.wordscounter.data.AssetsTextRepository
+import com.alexbernat.wordscounter.data.InMemoryWordsRepository
 import com.alexbernat.wordscounter.domain.CalculateWordsUseCase
-import com.alexbernat.wordscounter.domain.GetTextUseCase
-import com.alexbernat.wordscounter.domain.SortWordsUseCase
+import com.alexbernat.wordscounter.domain.GetSortedWordsUseCase
 import com.alexbernat.wordscounter.domain.TextRepository
+import com.alexbernat.wordscounter.domain.WordsRepository
 import com.alexbernat.wordscounter.ui.MainFragmentViewModel
-import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -21,25 +21,24 @@ val appModule = module {
     single<AssetManager> {
         androidApplication().assets
     }
-    single {
-        GetTextUseCase(
-            textRepository = get(),
-            dispatcher = Dispatchers.IO
-        )
+    single<WordsRepository> {
+        InMemoryWordsRepository()
     }
     single {
         CalculateWordsUseCase(
-            dispatcher = Dispatchers.Default
+            textRepository = get(),
+            wordsRepository = get()
         )
     }
     single {
-        SortWordsUseCase()
+        GetSortedWordsUseCase(
+            wordsRepository = get()
+        )
     }
     viewModel {
         MainFragmentViewModel(
-            getTextUseCase = get(),
             calculateWordsUseCase = get(),
-            sortWordsUseCase = get()
+            getSortedWordsUseCase = get()
         )
     }
 }
