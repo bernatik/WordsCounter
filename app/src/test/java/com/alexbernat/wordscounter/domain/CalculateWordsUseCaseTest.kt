@@ -7,9 +7,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.anyList
 import org.mockito.Mockito.mock
-import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.doThrow
+import org.mockito.kotlin.stub
 import org.mockito.kotlin.verifyBlocking
 
 @RunWith(MockitoJUnitRunner::class)
@@ -19,7 +20,9 @@ class CalculateWordsUseCaseTest : UseCaseTest() {
         private const val TEST_STRING = "Test string"
     }
 
-    private val textRepository = mock(TextRepository::class.java)
+    private val textRepository = mock(TextRepository::class.java).stub {
+        onBlocking { loadText() }.doReturn(TEST_STRING)
+    }
     private val wordsRepository = mock(WordsRepository::class.java)
 
     private lateinit var useCase: CalculateWordsUseCase
@@ -35,7 +38,6 @@ class CalculateWordsUseCaseTest : UseCaseTest() {
 
     @Test
     fun `verify success execution with valid input string`() = runWithDispatcher {
-        `when`(textRepository.loadText()).thenReturn(TEST_STRING)
         val result = useCase.execute()
         assertThat(result).isInstanceOf(UseCaseOutput.Success::class.java)
     }
@@ -49,7 +51,6 @@ class CalculateWordsUseCaseTest : UseCaseTest() {
 
     @Test
     fun `verify execution result is saved into repository`() = runWithDispatcher {
-        `when`(textRepository.loadText()).thenReturn(TEST_STRING)
         useCase.execute()
         verifyBlocking(wordsRepository) {
             save(anyList())
