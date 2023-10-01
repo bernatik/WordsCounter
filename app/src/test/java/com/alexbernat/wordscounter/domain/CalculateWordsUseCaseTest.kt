@@ -14,7 +14,7 @@ import org.mockito.kotlin.stub
 import org.mockito.kotlin.verifyBlocking
 
 @RunWith(MockitoJUnitRunner::class)
-class CalculateWordsUseCaseTest : UseCaseTest() {
+class CalculateWordsUseCaseTest : CoroutineTest() {
 
     companion object {
         private const val TEST_STRING = "Test string"

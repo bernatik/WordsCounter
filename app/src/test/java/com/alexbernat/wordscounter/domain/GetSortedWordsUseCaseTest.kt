@@ -13,7 +13,7 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.stub
 
 @RunWith(MockitoJUnitRunner::class)
-class GetSortedWordsUseCaseTest : UseCaseTest() {
+class GetSortedWordsUseCaseTest : CoroutineTest() {
 
     private val word1 = Word("word1", frequency = 2)
     private val word2 = Word("word20", frequency = 1)
