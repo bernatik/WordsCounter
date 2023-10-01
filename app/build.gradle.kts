@@ -60,7 +60,7 @@ dependencies {
     val recyclerViewVersion = "1.3.1"
 
     val junitVersion = "4.13.2"
-    val mockitoKotlinVersion = "5.1.0"
+    val mockitoKotlinVersion = "4.1.0"
     val coroutinesVersion = "1.7.3"
     val assertionsVersion = "1.1.5"
 
