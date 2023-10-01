@@ -59,6 +59,10 @@ dependencies {
     val constraintLayoutVersion = "2.1.4"
     val recyclerViewVersion = "1.3.1"
 
+    val junitVersion = "4.13.2"
+    val mockitoKotlinVersion = "5.1.0"
+    val coroutinesVersion = "1.7.3"
+    val assertionsVersion = "1.1.5"
 
     implementation("androidx.core:core-ktx:$androidXCore")
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
@@ -69,4 +73,9 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
 
     implementation("io.insert-koin:koin-android:$koinVersion")
+
+    testImplementation("junit:junit:$junitVersion")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
+    testImplementation("com.google.truth:truth:$assertionsVersion")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
 }
